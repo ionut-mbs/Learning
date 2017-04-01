@@ -1,0 +1,61 @@
+#include "stdafx.h"
+
+template <int n>
+int sum(array<int, n> values)
+{
+	int result = 0;
+	for (int value : values)
+		result += value;
+	return result;
+}
+
+int main()
+{
+	array<int, 5> numbers = { {1,2,3,4,5} };
+	array<int, 3> more_numbers = { {1,3,5} };
+	cout << sum(numbers) << endl;
+	cout << sum(more_numbers) << endl;
+
+	vector<float> values{ 1,2,3 };
+	values.push_back(4.5f);
+	values.push_back(5);
+	values.pop_back();
+	cout << "There are " << values.size() << " values" << endl;
+	for (auto value : values)
+		cout << value << "\t";
+	cout << endl;
+
+	//float v = values[5];
+	try
+	{
+		float u = values.at(5);
+	}
+	catch (const std::out_of_range& e)
+	{
+		cout << e.what() << endl;
+	}
+
+	string speech("to be or not to be, that is the question");
+	set<char> letters;
+	for (char c : speech)
+	{
+		if (isalpha(c)) letters.insert(c);
+	}
+
+	for (char c : letters)
+		cout << c << "\t";
+	cout << endl;
+
+	map<char, int> histogram;
+	for (char c : speech)
+	{
+		if (isalnum(c)) histogram[c]++;
+	}
+
+	for (auto u : histogram)
+		cout << u.first << " - " << u.second << endl;
+
+
+	system("pause");
+	return 0;
+}
